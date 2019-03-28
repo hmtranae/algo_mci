@@ -24,6 +24,7 @@ class Array {
     delete(index) {
         const item = this.data[index];
         this.shiftItems(index);
+        return item;
     }
 
     shiftItems(index) {
