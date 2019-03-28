@@ -1,15 +1,15 @@
-console.log(hasPairWithSum2([1, 2, 3, 9], 8));
-console.log(hasPairWithSum2([1, 2, 4, 3], 8));
+// reference type
 
-// better solution
-function hasPairWithSum2(arr, sum) {
-    const set = new Set();
-    for (let i = 0; i < arr.length; i++) {
-        if (!set.has(arr[i])) {
-            set.add(sum - arr[i])
-        } else if (set.has(arr[i])) {
-            return true;
-        }
-    }
-    return false;
-}
+var object1 = { value: 10 };
+var object2 = object1;
+var object3 = { value: 10 };
+
+object1 === object2;
+
+object1 === object3;
+
+object1.value = 15;
+
+object2.value;
+
+object3.value;
