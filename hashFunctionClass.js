@@ -13,14 +13,20 @@ class HashTable {
     }
 
     set(key, value) {
-
-    }
+        const index = this._hash(key);
+        if (!this.data[index]) {
+            this.data[index] = [];
+        }
+        this.data[index] = [key, value];
+        return this.data;
+    } 
 
     get(key) {
-
+        const index = this._hash(key);
+        return this.data[index][1];
     }
 }
 
 const myHashTable = new HashTable(50);
-myHashTable.set('grapes', 10000);
-myHashTable.get('grapes');
+console.log(myHashTable.set('grapes', 10000));
+console.log(myHashTable.get('grapes'));
