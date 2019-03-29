@@ -11,4 +11,3 @@ console.log(user.age);
 user.spell = 'abra kadabra';
 
 console.log(user);
-console.log(user.scream)
