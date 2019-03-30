@@ -45,9 +45,12 @@ class LinkedList {
         if (index >= this.length) {
             return this.append(value);
         }
+        
+        if (index === 0) {
+            return this.prepend(value);
+        }
 
         let leader = this.traverseToIndex(index - 1);
-        console.log(leader);
         let nodeAfterInsertion = leader.next;
         leader.next = new Node(value);
         leader.next.next = nodeAfterInsertion;
@@ -65,8 +68,13 @@ class LinkedList {
     }
 
     remove(index) {
-        let node = this.traverseToIndex(index);
-        // console.log(node);
+        if (index === 0) {
+            this.head = this.head.next;
+            return;
+        }
+        let leader = this.traverseToIndex(index - 1);
+        leader.next = this.traverseToIndex(index + 1);
+        this.length--;
     }
 }
 
