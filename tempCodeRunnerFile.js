@@ -1,9 +1,13 @@
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
 class LinkedList {
     constructor(value) {
-        this.head = {
-            value: value,
-            next: null
-        }
+        this.head = new Node(value);
         this.tail = this.head;
         this.length = 1;
     }
@@ -13,10 +17,7 @@ class LinkedList {
         while (node.next) {
             node = node.next;
         }
-        node.next = {
-            value: value,
-            next: null
-        }
+        node.next = new Node(value);
         this.tail = node.next;
         this.length++;
     }
