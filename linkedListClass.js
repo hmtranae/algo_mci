@@ -22,12 +22,18 @@ class LinkedList {
     }
 
     prepend(value) {
-        
+        let oldHead = this.head;
+        this.head = {
+            value: value,
+            next: oldHead
+        }
+        this.length++;
     }
 }
 
 const myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(16);
+myLinkedList.prepend(1);
 // 10 --> 5 --> 16
 console.log(myLinkedList);
