@@ -42,16 +42,38 @@ class LinkedList {
     }
 
     insert(index, value) {
+        if (index >= this.length) {
+            return this.append(value);
+        }
 
+        let leader = this.traverseToIndex(index);
+        let nodeAfterInsertion = leader.next;
+        leader.next = new Node(value);
+        leader.next.next = nodeAfterInsertion;
+        this.length++;
     }
 
+    traverseToIndex(index) {
+        let counter = 1;
+        let node = this.head;
+        while (counter < index) {
+            counter++;
+            node = node.next;
+        }
+        return node;
+    }
+
+    remove(index) {
+
+    }
 }
 
 const myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(16);
 myLinkedList.prepend(1);
-myLinkedList.printList();
 myLinkedList.insert(2, 99);
+myLinkedList.insert(10, 421);
+console.log(myLinkedList.printList());
+// 1 --> 10 --> 5 --> 16
 // 1 --> 10 --> 99 --> 5 --> 16
-console.log(myLinkedList);
