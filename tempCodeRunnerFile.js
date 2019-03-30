@@ -45,18 +45,19 @@ class LinkedList {
         if (index >= this.length) {
             return this.append(value);
         }
-        
-        let leader = this.traverseToIndex(index);
-        let nodeAfter = leader.next;
+
+        let leader = this.traverseToIndex(index - 1);
+        console.log(leader);
+        let nodeAfterInsertion = leader.next;
         leader.next = new Node(value);
-        leader.next.next = nodeAfter;
+        leader.next.next = nodeAfterInsertion;
         this.length++;
     }
 
     traverseToIndex(index) {
-        let counter = 1;
+        let counter = 0;
         let node = this.head;
-        while (counter < index) {
+        while (counter !== index) {
             counter++;
             node = node.next;
         }
@@ -64,7 +65,8 @@ class LinkedList {
     }
 
     remove(index) {
-
+        let node = this.traverseToIndex(index);
+        // console.log(node);
     }
 }
 
@@ -74,6 +76,8 @@ myLinkedList.append(16);
 myLinkedList.prepend(1);
 myLinkedList.insert(2, 99);
 myLinkedList.insert(10, 421);
+myLinkedList.remove(1);
 console.log(myLinkedList.printList());
 // 1 --> 10 --> 5 --> 16
 // 1 --> 10 --> 99 --> 5 --> 16
+// 1 --> 10 --> 99 --> 5 --> 16 --> 421
