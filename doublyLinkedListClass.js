@@ -50,10 +50,14 @@ class DoublyLinkedList {
             return this.prepend(value);
         }
 
+        const newNode = new Node(value);
+
         let leader = this.traverseToIndex(index - 1);
-        let nodeAfterInsertion = leader.next;
-        leader.next = new Node(value);
-        leader.next.next = nodeAfterInsertion;
+        let follower = leader.next;
+        leader.next = newNode;
+        newNode.prev = leader; 
+        newNode.next = follower;
+        follower.prev = newNode;
         this.length++;
     }
 
